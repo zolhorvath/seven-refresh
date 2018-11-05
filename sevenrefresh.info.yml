@@ -1,0 +1,49 @@
+name: 'Seven Refresh'
+type: profile
+description: 'Drupal distribution for Seven refresh'
+core: 8.x
+distribution:
+  name: 'Seven Refresh'
+  langcode: en
+dependencies:
+  - node
+  - history
+  - block
+  - breakpoint
+  - ckeditor
+  - color
+  - config
+  - comment
+  - contextual
+  - contact
+  - menu_link_content
+  - datetime
+  - datetime_range
+  - block_content
+  - quickedit
+  - editor
+  - help
+  - image
+  - inline_form_errors
+  - menu_ui
+  - options
+  - path
+  - page_cache
+  - dynamic_page_cache
+  - big_pipe
+  - taxonomy
+  - dblog
+  - search
+  - shortcut
+  - styleguide
+  - toolbar
+  - field_ui
+  - file
+  - rdf
+  - telephone
+  - views
+  - views_ui
+  - tour
+  - automated_cron
+themes:
+  - seven

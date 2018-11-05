@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.testform
+    - field.storage.contact_message.field_datetime_range
+  module:
+    - datetime_range
+id: contact_message.testform.field_datetime_range
+field_name: field_datetime_range
+entity_type: contact_message
+bundle: testform
+label: 'Datetime range'
+description: 'Datetime range input'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

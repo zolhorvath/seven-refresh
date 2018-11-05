@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: testform
+label: 'Seven Test'
+recipients:
+  - website@example.com
+reply: ''
+weight: 0
+message: ''
+redirect: ''

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.testform
+    - field.storage.contact_message.field_telephone_number
+  module:
+    - telephone
+id: contact_message.testform.field_telephone_number
+field_name: field_telephone_number
+entity_type: contact_message
+bundle: testform
+label: 'Telephone number'
+description: 'Telephone number input'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

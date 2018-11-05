@@ -1,0 +1,11 @@
+sevenrefresh.front_page:
+  title: 'Home'
+  route_name: '<front>'
+  menu_name: main
+
+sevenrefresh.testform:
+  title: 'Test form'
+  route_name: entity.contact_form.canonical
+  menu_name: main
+  route_parameters:
+    contact_form: testform
