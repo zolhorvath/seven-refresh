@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Contains code for Checkboxes and Radio test form.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_toolbar().
+ */
+function checkboxradio_toolbar() {
+  $items['checkboxradio'] = [
+    '#type' => 'toolbar_item',
+    'tab' => [
+      '#type' => 'link',
+      '#title' => t('Checkboxes and Radios'),
+      '#url' => Url::fromRoute('entity.contact_form.canonical', [
+        'contact_form' => 'checkbox_radio',
+      ]),
+    ],
+    '#weight' => 103,
+  ];
+
+  return $items;
+}
+
+function checkboxradio_form_contact_message_checkbox_radio_form_alter(&$form, FormStateInterface $form_state) {
+  $form['field_checkboxes_disabled']['#disabled'] = TRUE;
+  $form['field_radios_disabled']['#disabled'] = TRUE;
+}

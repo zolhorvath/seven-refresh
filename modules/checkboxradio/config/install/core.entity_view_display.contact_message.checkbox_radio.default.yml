@@ -1,0 +1,57 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.checkbox_radio
+    - field.field.contact_message.checkbox_radio.field_checkbox
+    - field.field.contact_message.checkbox_radio.field_checkboxes
+    - field.field.contact_message.checkbox_radio.field_checkboxes_disabled
+    - field.field.contact_message.checkbox_radio.field_radios
+    - field.field.contact_message.checkbox_radio.field_radios_disabled
+  module:
+    - options
+id: contact_message.checkbox_radio.default
+targetEntityType: contact_message
+bundle: checkbox_radio
+mode: default
+content:
+  field_checkbox:
+    weight: 0
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_checkboxes:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_checkboxes_disabled:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_radios:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_radios_disabled:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+hidden:
+  message: true

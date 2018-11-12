@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: checkbox_radio
+label: 'Seven Checkboxes and Radios'
+recipients:
+  - website@example.com
+reply: ''
+weight: 1
+message: ''
+redirect: ''
