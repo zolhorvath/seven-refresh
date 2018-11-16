@@ -6,45 +6,46 @@ distribution:
   name: 'Seven Refresh'
   langcode: en
 dependencies:
-  - node
-  - history
+  - automated_cron
+  - big_pipe
   - block
+  - block_content
   - breakpoint
-  - ckeditor
   - checkboxradio
+  - ckeditor
   - color
-  - config
   - comment
-  - contextual
+  - config
   - contact
-  - menu_link_content
+  - contextual
   - datetime
   - datetime_range
-  - block_content
-  - quickedit
+  - dblog
+  - dynamic_page_cache
   - editor
+  - field_ui
+  - file
   - help
+  - history
   - image
   - inline_form_errors
+  - lang_hebrew
+  - menu_link_content
   - menu_ui
+  - node
   - options
-  - path
   - page_cache
-  - dynamic_page_cache
-  - big_pipe
-  - taxonomy
-  - dblog
+  - path
+  - quickedit
+  - rdf
   - search
   - shortcut
   - styleguide
-  - toolbar
-  - field_ui
-  - file
-  - rdf
+  - taxonomy
   - telephone
+  - toolbar
+  - tour
   - views
   - views_ui
-  - tour
-  - automated_cron
 themes:
   - seven

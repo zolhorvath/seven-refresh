@@ -4,5 +4,5 @@ description: 'Test form for checkboxes and radios'
 core: 8.x
 package: 'Seven Refresh'
 dependencies:
-  - contact
-  - options
+  - drupal:contact
+  - drupal:options

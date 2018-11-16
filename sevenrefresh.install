@@ -40,12 +40,12 @@ function sevenrefresh_install() {
   user_role_grant_permissions(RoleInterface::ANONYMOUS_ID, [
     'view style guides',
     'use text format basic_html',
-    'access site-wide contact form'
+    'access site-wide contact form',
   ]);
   user_role_grant_permissions(RoleInterface::AUTHENTICATED_ID, [
     'view style guides',
     'use text format basic_html',
-    'access site-wide contact form'
+    'access site-wide contact form',
   ]);
 
   $config_factory->getEditable('system.theme')

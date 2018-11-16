@@ -27,6 +27,9 @@ function checkboxradio_toolbar() {
   return $items;
 }
 
+/**
+ * Implements hook_form_FORM_ID_alter() for checkbox_radio_form.
+ */
 function checkboxradio_form_contact_message_checkbox_radio_form_alter(&$form, FormStateInterface $form_state) {
   // Apply disabled state for some test widgets.
   $form['field_checkboxes_disabled']['#disabled'] = TRUE;

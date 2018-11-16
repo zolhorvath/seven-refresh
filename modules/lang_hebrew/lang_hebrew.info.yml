@@ -1,0 +1,8 @@
+name: 'Hebrew language'
+type: module
+core: 8.x
+package: 'Seven Refresh'
+dependencies:
+  - drupal:block
+  - drupal:language
+  - drupal:locale
