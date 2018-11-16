@@ -1,0 +1,6 @@
+name: 'Seven Developer Helper'
+description: 'Disables render caching, enables debug mode'
+type: module
+core: 8.x
+package: 'Seven Refresh'
+dependencies: {  }

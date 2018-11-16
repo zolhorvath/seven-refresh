@@ -1,0 +1,11 @@
+services:
+  sevendev.overrider:
+    class: Drupal\sevendev\ConfigOverrider
+    tags:
+      - { name: config.factory.override }
+
+parameters:
+  twig.config:
+    debug: true
+    auto_reload: true
+    cache: false
