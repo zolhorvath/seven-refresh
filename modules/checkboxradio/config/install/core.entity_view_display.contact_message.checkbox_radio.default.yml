@@ -4,6 +4,7 @@ dependencies:
   config:
     - contact.form.checkbox_radio
     - field.field.contact_message.checkbox_radio.field_checkbox
+    - field.field.contact_message.checkbox_radio.field_checkbox_hidden_label
     - field.field.contact_message.checkbox_radio.field_checkboxes
     - field.field.contact_message.checkbox_radio.field_checkboxes_disabled
     - field.field.contact_message.checkbox_radio.field_radios
@@ -17,6 +18,16 @@ mode: default
 content:
   field_checkbox:
     weight: 0
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_checkbox_hidden_label:
+    weight: 5
     label: above
     settings:
       format: default

@@ -4,6 +4,7 @@ dependencies:
   config:
     - contact.form.checkbox_radio
     - field.field.contact_message.checkbox_radio.field_checkbox
+    - field.field.contact_message.checkbox_radio.field_checkbox_hidden_label
     - field.field.contact_message.checkbox_radio.field_checkboxes
     - field.field.contact_message.checkbox_radio.field_checkboxes_disabled
     - field.field.contact_message.checkbox_radio.field_radios
@@ -14,6 +15,13 @@ bundle: checkbox_radio
 mode: default
 content:
   field_checkbox:
+    weight: 1
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_checkbox_hidden_label:
     weight: 0
     settings:
       display_label: true
@@ -21,25 +29,25 @@ content:
     type: boolean_checkbox
     region: content
   field_checkboxes:
-    weight: 1
-    settings: {  }
-    third_party_settings: {  }
-    type: options_buttons
-    region: content
-  field_checkboxes_disabled:
     weight: 2
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
     region: content
-  field_radios:
+  field_checkboxes_disabled:
     weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
     region: content
-  field_radios_disabled:
+  field_radios:
     weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_radios_disabled:
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_buttons

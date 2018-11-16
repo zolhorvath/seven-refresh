@@ -28,6 +28,10 @@ function checkboxradio_toolbar() {
 }
 
 function checkboxradio_form_contact_message_checkbox_radio_form_alter(&$form, FormStateInterface $form_state) {
+  // Apply disabled state for some test widgets.
   $form['field_checkboxes_disabled']['#disabled'] = TRUE;
   $form['field_radios_disabled']['#disabled'] = TRUE;
+
+  // Make label invisible for the 'hidden label' checkbox.
+  $form['field_checkbox_hidden_label']['widget']['value']['#title_display'] = 'attribute';
 }
