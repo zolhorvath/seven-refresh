@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "nightwatch": "^0.9.21"
+  }
+}

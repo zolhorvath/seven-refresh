@@ -1,0 +1,52 @@
+{
+  "src_folders" : ["tests/Nightwatch/Tests"],
+  "output_folder" : "reports",
+  "custom_commands_path" : ["tests/Nightwatch/Commands"],
+  "custom_assertions_path" : "",
+  "page_objects_path" : "",
+  "globals_path" : "",
+
+  "test_settings" : {
+    "default" : {
+      "launch_url" : "http://eight.localhost",
+      "selenium_port"  : 4444,
+      "selenium_host"  : "localhost",
+      "silent": true,
+      "screenshots" : {
+        "enabled" : true,
+        "path" : "reports/screenshots"
+      },
+      "globals": {
+        "waitForConditionTimeout": 5000
+      },
+      "desiredCapabilities": {
+        "browserName": "chrome",
+        "chromeOptions": {
+          "args": [
+            "headless",
+            "disable-gpu",
+            "disable-web-security",
+            "ignore-certificate-errors"
+          ]
+        }
+      }
+    },
+
+    "safari": {
+      "desiredCapabilities": {
+        "browserName": "safari",
+        "chromeOptions": null
+      }
+    },
+
+    "firefox": {
+      "desiredCapabilities": {
+        "browserName": "firefox",
+        "moz:firefoxOptions": {
+          "args": ["-headless"]
+        },
+        "chromeOptions": null
+      }
+    }
+  }
+}
