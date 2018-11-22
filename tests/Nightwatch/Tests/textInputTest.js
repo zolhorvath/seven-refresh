@@ -38,14 +38,16 @@ module.exports = {
         .setDateValue('[name="field_date[0][value][date]"]', '2018-11-06')
         // Date and Time, filling only date.
         .setDateValue('[name="field_date_time[0][value][date]"]', '2018-11-06')
-        // // Timestamp: providing invalid value.
+        // Timestamp: providing invalid value.
         .setDateValue('[name="field_timestamp[0][value][date]"]', '0476-11-21')
         .setValue('[name="field_timestamp[0][value][time]"]', '12:00:00')
-        // // Datetime range: starting datetime is more than the ending datetime.
+        // Datetime range: starting datetime is more than the ending datetime.
         .setDateValue('[name="field_datetime_range[0][value][date]"]', '2018-12-01')
         .setValue('[name="field_datetime_range[0][value][time]"]', '12:00:00')
         .setDateValue('[name="field_datetime_range[0][end_value][date]"]', '2018-10-28')
         .setValue('[name="field_datetime_range[0][end_value][time]"]', '11:00:00')
+        // Exiting datetime input.
+        .click('[name="field_telephone_number[0][value]"]')
         .pause(300)
         .savefullScreenShot('01', langprefix)
         .click('input#edit-submit', () => {
@@ -53,6 +55,7 @@ module.exports = {
             .waitForElementPresent('.messages--error', 5000)
             .setValue('[name="files[field_file_0]"]', path.resolve(__dirname + path.sep + 'test.txt'), () => {
               browser
+                // Exiting file input.
                 .click('[name="field_telephone_number[0][value]"]')
                 .waitForElementPresent('.form-file.error', 5000);
             })
