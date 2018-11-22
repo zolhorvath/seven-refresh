@@ -8,15 +8,15 @@ const fs = require('fs');
  *   Prefix for the file name, optional.
  * @param {string} nameSuffix
  *   Suffix for the file name, optional.
- * @param {bool} override
- *   Whether the destionation can be overridden if exists. True by default.
  * @param {string} name
  *   Test name override.
+ * @param {bool} override
+ *   Whether the destionation can be overridden if exists. True by default.
  *
  * @return {object}
  *   The 'browser' instance.
  */
-exports.command = function savefullScreenShot(namePrefix = '', nameSuffix = '', override = true, name = '') {
+exports.command = function savefullScreenShot(namePrefix = '', nameSuffix = '', name = '', override = (typeof this.globals.fullScreenShotOverride !== 'undefined' ? this.globals.fullScreenShotOverride : true)) {
 
   const _self = this;
   let nameComponents = [(name ? name : _self.currentTest.name), _self.capabilities.platform || _self.capabilities.platformName, _self.capabilities.browserName];

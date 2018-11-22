@@ -57,7 +57,7 @@ module.exports = {
                 .waitForElementPresent('.form-file.error', 5000);
             })
             .elements('css selector', '.form-item__error-message,.form-item--error-message', (results) => {
-              browser.savefullScreenShot((results.value.length ? '03' : '02'), langprefix, true, (results.value.length ? 'Inline error states' : 'Error states'));
+              browser.savefullScreenShot((results.value.length ? '03' : '02'), langprefix, (results.value.length ? 'Inline error states' : 'Error states'));
             });
         });
     });

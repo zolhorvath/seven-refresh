@@ -17,7 +17,8 @@
         "path" : "reports/screenshots"
       },
       "globals": {
-        "waitForConditionTimeout": 5000
+        "waitForConditionTimeout": 5000,
+        "fullScreenShotOverride": true
       },
       "desiredCapabilities": {
         "browserName": "chrome",

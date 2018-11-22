@@ -17,6 +17,10 @@ module.exports = ((settings) => {
   ];
   // Real profile for Firefox.
   settings.test_settings.firefox.desiredCapabilities['moz:firefoxOptions'].args.push('-profile', '/path/to/profile');
+  // Don't override full screen capture files.
+  // If this isn't defined or true, then the generated pngs get overridden on
+  // each test run.
+  settings.test_settings.default.globals.fullScreenShotOverride = true;
 
   return settings;
 })(require('./nightwatch.json'));

@@ -48,7 +48,7 @@ module.exports = {
           .elements('css selector', '.form-item__error-message,.form-item--error-message', (results) => {
             if (!results.value.length) {
               browser.currentTest.module = 'checkboxRadioTest';
-              browser.savefullScreenShot('02', langprefix, true, 'Error states');
+              browser.savefullScreenShot('02', langprefix, 'Error states');
             }
           });
       });
