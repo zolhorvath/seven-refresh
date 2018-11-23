@@ -35,3 +35,11 @@ function sevenrefresh_toolbar() {
 
   return $items;
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for menu__main.
+ */
+function sevenrefresh_preprocess_menu__main(&$variables) {
+  // Makes main menu items inline.
+  $variables['attributes']['class'][] = 'inline';
+}

@@ -40,9 +40,11 @@ dependencies:
   - rdf
   - search
   - shortcut
+  - sr_core
   - styleguide
   - taxonomy
   - telephone
+  - textarea
   - toolbar
   - tour
   - views

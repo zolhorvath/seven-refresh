@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: textarea
+label: 'Seven textarea'
+recipients:
+  - website@example.com
+reply: ''
+weight: 2
+message: ''
+redirect: ''

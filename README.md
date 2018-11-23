@@ -4,7 +4,8 @@ Drupal distribution for Seven refresh
 
 ## Getting
 
-* `composer config repositories.'zolhorvath/seven-refresh' github https://github.com/zolhorvath/seven-refresh.git`
+* `composer config repositories.'zolhorvath/seven-refresh' github
+https://github.com/zolhorvath/seven-refresh.git`
 * `composer require zolhorvath/seven-refresh`
 * `drush si sevenrefresh`
 
@@ -24,17 +25,23 @@ Drupal distribution for Seven refresh
 
   Additional environments:
   * `firefox`
-  * `safari` [How to enable Safari WebDriver]
+  * `safari` [How to enable Safari WebDriver][1]
 
   `./node_modules/.bin/nightwatch -e default,firefox,safari`
   To create screenshots in every defined env (parallelly).
 
   `./node_modules/.bin/nightwatch tests/Nightwatch/Tests/textInputTest.js`
   To run only a single test.
+* Screenshots will be saved to `reports/screenshots/[testName]`.
 
 ## Further tools
 
-* [Incubator] for Drupal 8 extension development
+* __Seven Developer Helper__ `sevendev` module
+  Disables caches and switches on twig debugging. Not enabled by default.
+* [Incubator][1] for Drupal 8 extension development
+  A simple _Grunt Drupal Tasks_-based scaffolding tool what provides a flexible
+  local environment for Drupal contrib extension development
 
-[Incubator]: https://gitlab.com/z.a.horvath/incubator
-[How to enable Safari WebDriver]:  https://developer.apple.com/documentation/webkit/testing_with_webdriver_in_safari
+[1]: https://gitlab.com/z.a.horvath/incubator
+[2]:
+http://developer.apple.com/documentation/webkit/testing_with_webdriver_in_safari

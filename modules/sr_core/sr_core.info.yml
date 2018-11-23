@@ -1,0 +1,9 @@
+name: 'Seven Refresh Core'
+type: module
+description: 'Contains core components of the Seven Refresh profile what cannot be shipped by a Drupal profile'
+core: 8.x
+package: 'Seven Refresh'
+dependencies:
+  - drupal:block
+  - drupal:language
+  - drupal:locale
