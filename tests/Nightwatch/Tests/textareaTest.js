@@ -31,7 +31,7 @@ module.exports = {
 
       browser
         .setValue('[name="message[0][value]"]', 'Test message body')
-        .waitForElementPresent('[name="formatted[0][value]"] + .cke .cke_wysiwyg_frame', 5000)
+        // .waitForElementPresent('[name="formatted[0][value]"] + .cke .cke_wysiwyg_frame', 5000)
         .setEditorValue('[name="formatted[0][value]"]', 'Some text here...')
         .click('[class*="js-form-item-"][class*="-formatted-summary-0-value"] .link-edit-summary')
         .waitForElementVisible('[name="formatted_summary[0][summary]"]', 5000)
@@ -52,7 +52,7 @@ module.exports = {
 
       browser
         .setValue('[name="message[0][value]"]', 'Test message body with error')
-        .waitForElementPresent('[name="formatted[0][value]"] + .cke .cke_wysiwyg_frame', 5000)
+        // .waitForElementPresent('[name="formatted[0][value]"] + .cke .cke_wysiwyg_frame', 5000)
         .setEditorValue('[name="formatted[0][value]"]', 'Some text here (this doesn\'t matter).')
         .click('[class*="js-form-item-"][class*="-formatted-summary-0-value"] .link-edit-summary')
         .waitForElementVisible('[name="formatted_summary[0][summary]"]', 5000)

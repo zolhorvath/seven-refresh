@@ -14,7 +14,10 @@ label: 'Formatted text'
 description: 'Description of formatted text field'
 required: false
 translatable: false
-default_value: {  }
+default_value:
+  -
+    value: "\n"
+    format: no_editor
 default_value_callback: ''
 settings: {  }
 field_type: text_long

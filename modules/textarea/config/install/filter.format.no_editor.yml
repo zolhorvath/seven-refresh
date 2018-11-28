@@ -1,8 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
-name: 'Restricted HTML'
-format: restricted_html
+name: 'Without Editor'
+format: no_editor
 weight: 0
 filters:
   filter_url:
