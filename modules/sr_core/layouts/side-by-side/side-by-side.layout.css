@@ -11,8 +11,14 @@
   }
 
   .sbs-layout__item--main {
-    flex: 0 0 50%;
+    /**
+     * This should be `flex: 0 0 50%`, without other explicitly set width.
+     * We're working around an IE bug,
+     * @see https://github.com/philipwalton/flexbugs#flexbug-7
+     */
+    flex: 0 0 auto;
     padding-left: 20px;
     box-sizing: border-box;
+    width: 50%;
   }
 }
