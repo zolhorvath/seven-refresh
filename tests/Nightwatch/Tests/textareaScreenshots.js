@@ -30,16 +30,16 @@ module.exports = {
         .sevenRefreshURL((langprefix ? '/' + langprefix : '') + '/contact/textarea');
 
       browser
-        .setValue('[name="message[0][value]"]', 'Test message body')
+        .setValueAndChange('[name="message[0][value]"]', 'Test message body')
         .waitForElementPresent('[name="formatted[0][value]"] + .cke .cke_wysiwyg_frame', 5000)
         .setSelectValue('[name="formatted[0][format]"]', 'no_editor')
         .waitForElementNotPresent('[name="formatted[0][value]"] + .cke', 5000)
-        .setEditorValue('[name="formatted[0][value]"]', 'Some text here...')
+        .setValueAndChange('[name="formatted[0][value]"]', 'Some text here...')
         .click('[class*="js-form-item-"][class*="-formatted-summary-0-value"] .link-edit-summary')
         .waitForElementVisible('[name="formatted_summary[0][summary]"]', 5000)
-        .setValue('[name="formatted_summary[0][summary]"]', '..some summary here...')
+        .setValueAndChange('[name="formatted_summary[0][summary]"]', '..some summary here...')
         .waitForElementPresent('[name="formatted_summary[0][value]"] + .cke .cke_wysiwyg_frame', 5000)
-        .setEditorValue('[name="formatted_summary[0][value]"]', '..and some body text here too.')
+        .setValueAndChange('[name="formatted_summary[0][value]"]', '..and some body text here too.')
         .pause(300)
         .savefullScreenShot('01', langprefix);
     });
@@ -53,12 +53,12 @@ module.exports = {
         .sevenRefreshURL((langprefix ? '/' + langprefix : '') + '/contact/textarea');
 
       browser
-        .setValue('[name="message[0][value]"]', 'Test message body with error')
+        .setValueAndChange('[name="message[0][value]"]', 'Test message body with error')
         .waitForElementPresent('[name="formatted[0][value]"] + .cke .cke_wysiwyg_frame', 5000)
-        .setEditorValue('[name="formatted[0][value]"]', 'Some text here (this doesn\'t matter).')
+        .setValueAndChange('[name="formatted[0][value]"]', 'Some text here (this doesn\'t matter).')
         .click('[class*="js-form-item-"][class*="-formatted-summary-0-value"] .link-edit-summary')
         .waitForElementVisible('[name="formatted_summary[0][summary]"]', 5000)
-        .setValue('[name="formatted_summary[0][summary]"]', '..some summary here, but no text in main area!')
+        .setValueAndChange('[name="formatted_summary[0][summary]"]', '..some summary here, but no text in main area!')
         .click('input#edit-submit');
 
       browser

@@ -14,10 +14,7 @@
  *   The 'browser' instance.
  */
 exports.command = function setSelectValue(cssSelector, value = '', callback) {
-  // document.querySelector('[name="formatted[0][format]"]').value='basic_html'
-  // "basic_html"
-  // document.querySelector('[name="formatted[0][format]"]').dispatchEvent(new Event('change'));
-  // true
+  const _self = this;
   const cssSelectorForOption = cssSelector + ' option[value="' + value + '"]';
 
   // Assert that the element is a select.
@@ -34,30 +31,20 @@ exports.command = function setSelectValue(cssSelector, value = '', callback) {
 
   // Set the value and trigger a change event.
   this
-    .elements('css selector', cssSelector, (results) => {
-      this
-        .click(cssSelector) // To have focus...
-        .perform(() => {
-        // this.getAttribute(cssSelector, 'id', (result) => {
-        //   const selectId = result.value;
-          this.execute(
-            function () {
-              document.querySelector(arguments[0]).value = arguments[1];
-              document.querySelector(arguments[0]).dispatchEvent(new Event('change'));
-              // CKEDITOR.instances[arguments[0]].setData(arguments[1]);
-            },
-            [
-              cssSelector,
-              value
-            ]
-          );
-        // });
-      });
-    });
+    .click(cssSelector) // To have focus...
+    .setValue(cssSelector, value) // Set value.
+    .execute(
+      function () {
+        // Set the value again.
+        document.querySelector(arguments[0]).value = arguments[1];
+        document.querySelector(arguments[0]).dispatchEvent(new Event('change'));
+      },
+      [cssSelector, value]
+    );
 
   if (typeof callback === 'function') {
-    callback.call(self);
+    callback.call(_self);
   }
 
   return this;
-}
+};

@@ -3,8 +3,8 @@ status: true
 dependencies:
   module:
     - contact
-id: contact_message.field_checkbox
-field_name: field_checkbox
+id: contact_message.checkbox_hidden_label_disabled
+field_name: checkbox_hidden_label_disabled
 entity_type: contact_message
 type: boolean
 settings: {  }

@@ -4,8 +4,8 @@ dependencies:
   module:
     - contact
     - options
-id: contact_message.field_radios
-field_name: field_radios
+id: contact_message.checkboxes
+field_name: checkboxes
 entity_type: contact_message
 type: list_string
 settings:
@@ -25,7 +25,7 @@ settings:
   allowed_values_function: ''
 module: options
 locked: false
-cardinality: 1
+cardinality: 2
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

@@ -3,9 +3,9 @@ status: true
 dependencies:
   config:
     - contact.form.checkbox_radio
-    - field.storage.contact_message.field_checkbox
-id: contact_message.checkbox_radio.field_checkbox
-field_name: field_checkbox
+    - field.storage.contact_message.checkbox
+id: contact_message.checkbox_radio.checkbox
+field_name: checkbox
 entity_type: contact_message
 bundle: checkbox_radio
 label: 'Standalone checkbox'

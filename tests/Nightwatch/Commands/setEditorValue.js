@@ -14,6 +14,7 @@
  *   The 'browser' instance.
  */
 exports.command = function setEditorValue(cssSelector, value = '', callback) {
+  const _self = this;
 
   const editorFrameSelector = cssSelector + ' ~ div .cke_wysiwyg_frame';
   this.assert.elementPresent(cssSelector);
@@ -25,33 +26,38 @@ exports.command = function setEditorValue(cssSelector, value = '', callback) {
   }
 
   // Filling the editor.
-  this
-    .elements('css selector', editorFrameSelector, (results) => {
-      if (!results.value.length) {
-        this.setValue(cssSelector, value);
-      }
-      else {
-        this
-          .click(editorFrameSelector) // To have focus...
-          .perform(() => {
+  this.elements('css selector', editorFrameSelector, (results) => {
+    if (!results.value.length) {
+      this
+        .setValue(cssSelector, value)
+        .execute(
+          function () {
+            document.querySelector(arguments[0]).value = arguments[1];
+            document.querySelector(arguments[0]).dispatchEvent(new Event('change'));
+          },
+          [cssSelector, value]
+        );
+    }
+    else {
+      this
+        .click(editorFrameSelector) // To have focus...
+        .perform(() => {
           this.getAttribute(cssSelector, 'id', (result) => {
             let editorId = result.value;
             this.execute(
               function () {
                 CKEDITOR.instances[arguments[0]].setData(arguments[1]);
+                CKEDITOR.instances[arguments[0]].fire('change');
               },
-              [
-                editorId,
-                value
-              ]
+              [editorId, value]
             );
           });
         });
-      }
-    });
+    }
+  });
 
   if (typeof callback === 'function') {
-    callback.call(self);
+    callback.call(_self);
   }
 
   return this;

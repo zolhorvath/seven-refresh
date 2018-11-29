@@ -28,13 +28,12 @@ module.exports = {
         .sevenRefreshURL((langprefix ? '/' + langprefix : '') + '/contact/checkbox_radio');
 
       browser
-        .click('[name="field_checkbox[value]"]')
-        .click('[name="field_checkboxes[first]"]')
-        .click('[name="field_checkboxes[second]"]')
-        .click('[name="field_checkboxes[third]"]')
-        .click('[name="field_radios"][value="second"]')
-        .pause(300);
-      browser
+        .click('[name="checkbox[value]"]')
+        .click('[name="checkboxes[first]"]')
+        .click('[name="checkboxes[second]"]')
+        .click('[name="checkboxes[third]"]')
+        .click('[name="radios"][value="second"]')
+        .pause(300)
         .savefullScreenShot('01', langprefix);
     });
   },
@@ -45,12 +44,11 @@ module.exports = {
         .sevenRefreshURL((langprefix ? '/' + langprefix : '') + '/contact/checkbox_radio');
 
       browser
-        .click('[name="field_checkbox[value]"]')
-        .click('[name="field_checkboxes[first]"]')
-        .click('[name="field_checkboxes[second]"]')
-        .click('[name="field_checkboxes[third]"]')
-        .submitForm('form.contact-message-checkbox-radio-form');
-      browser
+        .click('[name="checkbox[value]"]')
+        .click('[name="checkboxes[first]"]')
+        .click('[name="checkboxes[second]"]')
+        .click('[name="checkboxes[third]"]')
+        .submitForm('form.contact-message-checkbox-radio-form')
         .waitForElementPresent('.messages--error', 5000)
         .elements('css selector', '.form-item__error-message,.form-item--error-message', (results) => {
           browser.savefullScreenShot((results.value.length ? '03' : '02'), langprefix, (results.value.length ? 'Inline error states' : ''));

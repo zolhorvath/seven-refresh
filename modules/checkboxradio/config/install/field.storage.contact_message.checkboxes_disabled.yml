@@ -4,15 +4,15 @@ dependencies:
   module:
     - contact
     - options
-id: contact_message.field_radios_disabled
-field_name: field_radios_disabled
+id: contact_message.checkboxes_disabled
+field_name: checkboxes_disabled
 entity_type: contact_message
 type: list_string
 settings:
   allowed_values:
     -
-      value: _none
-      label: _none
+      value: first
+      label: 'First option'
     -
       value: second
       label: 'Second option'
@@ -25,7 +25,7 @@ settings:
   allowed_values_function: ''
 module: options
 locked: false
-cardinality: 1
+cardinality: 2
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

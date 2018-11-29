@@ -38,16 +38,15 @@ module.exports = {
 
         browser
           .sevenRefreshURL('/contact/checkbox_radio')
-          .click('[name="field_checkbox[value]"]')
-          .click('[name="field_checkboxes[first]"]')
-          .click('[name="field_checkboxes[second]"]')
-          .click('[name="field_checkboxes[third]"]')
-          .submitForm('form.contact-message-checkbox-radio-form');
-        browser
+          .click('[name="checkbox[value]"]')
+          .click('[name="checkboxes[first]"]')
+          .click('[name="checkboxes[second]"]')
+          .click('[name="checkboxes[third]"]')
+          .submitForm('form.contact-message-checkbox-radio-form')
           .waitForElementPresent('.messages--error', 5000)
           .elements('css selector', '.form-item__error-message,.form-item--error-message', (results) => {
             if (!results.value.length) {
-              browser.currentTest.module = 'checkboxRadioTest';
+              browser.currentTest.module = 'checkboxRadioScreenshots';
               browser.savefullScreenShot('02', langprefix, 'Error states');
             }
           });

@@ -3,15 +3,15 @@ status: true
 dependencies:
   config:
     - contact.form.checkbox_radio
-    - field.storage.contact_message.field_radios
+    - field.storage.contact_message.checkboxes
   module:
     - options
-id: contact_message.checkbox_radio.field_radios
-field_name: field_radios
+id: contact_message.checkbox_radio.checkboxes
+field_name: checkboxes
 entity_type: contact_message
 bundle: checkbox_radio
-label: Radios
-description: "Don't select anything to trigger an error"
+label: 'Checkboxes - 2 option allowed, required'
+description: 'Select nothing or more than 2 options to trigger an error'
 required: true
 translatable: false
 default_value: {  }

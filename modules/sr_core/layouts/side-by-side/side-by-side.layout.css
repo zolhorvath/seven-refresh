@@ -13,7 +13,7 @@
   .sbs-layout__item--main {
     /**
      * This should be `flex: 0 0 50%`, without other explicitly set width.
-     * We're working around an IE bug,
+     * We're working around an IE bug.
      * @see https://github.com/philipwalton/flexbugs#flexbug-7
      */
     flex: 0 0 auto;

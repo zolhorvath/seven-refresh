@@ -6,3 +6,4 @@ package: 'Seven Refresh'
 dependencies:
   - drupal:contact
   - drupal:options
+  - sevenrefresh:sr_core

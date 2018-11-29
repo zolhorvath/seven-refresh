@@ -3,12 +3,14 @@ status: true
 dependencies:
   config:
     - contact.form.checkbox_radio
-    - field.field.contact_message.checkbox_radio.field_checkbox
-    - field.field.contact_message.checkbox_radio.field_checkbox_hidden_label
-    - field.field.contact_message.checkbox_radio.field_checkboxes
-    - field.field.contact_message.checkbox_radio.field_checkboxes_disabled
-    - field.field.contact_message.checkbox_radio.field_radios
-    - field.field.contact_message.checkbox_radio.field_radios_disabled
+    - field.field.contact_message.checkbox_radio.checkbox
+    - field.field.contact_message.checkbox_radio.checkbox_disabled
+    - field.field.contact_message.checkbox_radio.checkbox_hidden_label
+    - field.field.contact_message.checkbox_radio.checkbox_hidden_label_disabled
+    - field.field.contact_message.checkbox_radio.checkboxes
+    - field.field.contact_message.checkbox_radio.checkboxes_disabled
+    - field.field.contact_message.checkbox_radio.radios
+    - field.field.contact_message.checkbox_radio.radios_disabled
   module:
     - options
 id: contact_message.checkbox_radio.default
@@ -16,7 +18,7 @@ targetEntityType: contact_message
 bundle: checkbox_radio
 mode: default
 content:
-  field_checkbox:
+  checkbox:
     weight: 0
     label: above
     settings:
@@ -26,7 +28,17 @@ content:
     third_party_settings: {  }
     type: boolean
     region: content
-  field_checkbox_hidden_label:
+  checkbox_disabled:
+    weight: 6
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  checkbox_hidden_label:
     weight: 5
     label: above
     settings:
@@ -36,28 +48,38 @@ content:
     third_party_settings: {  }
     type: boolean
     region: content
-  field_checkboxes:
+  checkbox_hidden_label_disabled:
+    weight: 7
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  checkboxes:
     weight: 1
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
-  field_checkboxes_disabled:
+  checkboxes_disabled:
     weight: 4
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
-  field_radios:
+  radios:
     weight: 2
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
-  field_radios_disabled:
+  radios_disabled:
     weight: 3
     label: above
     settings: {  }
@@ -65,4 +87,5 @@ content:
     type: list_default
     region: content
 hidden:
+  langcode: true
   message: true

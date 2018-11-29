@@ -3,9 +3,9 @@ status: true
 dependencies:
   config:
     - contact.form.checkbox_radio
-    - field.storage.contact_message.field_checkbox_hidden_label
-id: contact_message.checkbox_radio.field_checkbox_hidden_label
-field_name: field_checkbox_hidden_label
+    - field.storage.contact_message.checkbox_hidden_label
+id: contact_message.checkbox_radio.checkbox_hidden_label
+field_name: checkbox_hidden_label
 entity_type: contact_message
 bundle: checkbox_radio
 label: 'Checkbox with hidden label'

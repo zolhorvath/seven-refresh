@@ -3,11 +3,11 @@ status: true
 dependencies:
   config:
     - contact.form.checkbox_radio
-    - field.storage.contact_message.field_checkboxes_disabled
+    - field.storage.contact_message.checkboxes_disabled
   module:
     - options
-id: contact_message.checkbox_radio.field_checkboxes_disabled
-field_name: field_checkboxes_disabled
+id: contact_message.checkbox_radio.checkboxes_disabled
+field_name: checkboxes_disabled
 entity_type: contact_message
 bundle: checkbox_radio
 label: 'Checkboxes, disabled'

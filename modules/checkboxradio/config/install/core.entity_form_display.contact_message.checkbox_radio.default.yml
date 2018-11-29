@@ -3,57 +3,81 @@ status: true
 dependencies:
   config:
     - contact.form.checkbox_radio
-    - field.field.contact_message.checkbox_radio.field_checkbox
-    - field.field.contact_message.checkbox_radio.field_checkbox_hidden_label
-    - field.field.contact_message.checkbox_radio.field_checkboxes
-    - field.field.contact_message.checkbox_radio.field_checkboxes_disabled
-    - field.field.contact_message.checkbox_radio.field_radios
-    - field.field.contact_message.checkbox_radio.field_radios_disabled
+    - field.field.contact_message.checkbox_radio.checkbox
+    - field.field.contact_message.checkbox_radio.checkbox_disabled
+    - field.field.contact_message.checkbox_radio.checkbox_hidden_label
+    - field.field.contact_message.checkbox_radio.checkbox_hidden_label_disabled
+    - field.field.contact_message.checkbox_radio.checkboxes
+    - field.field.contact_message.checkbox_radio.checkboxes_disabled
+    - field.field.contact_message.checkbox_radio.radios
+    - field.field.contact_message.checkbox_radio.radios_disabled
+  module:
+    - field_layout
+    - sr_core
+third_party_settings:
+  field_layout:
+    id: side_by_side
+    settings: {  }
 id: contact_message.checkbox_radio.default
 targetEntityType: contact_message
 bundle: checkbox_radio
 mode: default
 content:
-  field_checkbox:
-    weight: 1
+  checkbox:
+    weight: 2
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
-    region: content
-  field_checkbox_hidden_label:
+    region: main
+  checkbox_disabled:
+    weight: 3
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: main
+  checkbox_hidden_label:
     weight: 0
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
-    region: content
-  field_checkboxes:
-    weight: 2
-    settings: {  }
+    region: main
+  checkbox_hidden_label_disabled:
+    weight: 1
+    settings:
+      display_label: true
     third_party_settings: {  }
-    type: options_buttons
-    region: content
-  field_checkboxes_disabled:
-    weight: 3
-    settings: {  }
-    third_party_settings: {  }
-    type: options_buttons
-    region: content
-  field_radios:
+    type: boolean_checkbox
+    region: main
+  checkboxes:
     weight: 4
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
-    region: content
-  field_radios_disabled:
+    region: main
+  checkboxes_disabled:
     weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
-    region: content
+    region: main
+  radios:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: main
+  radios_disabled:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: main
 hidden:
   copy: true
+  langcode: true
   mail: true
   message: true
   name: true

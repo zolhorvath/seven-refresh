@@ -14,19 +14,25 @@
  *   The 'browser' instance.
  */
 exports.command = function setDateValue(cssSelector, value = '', callback) {
-
+  const _self = this;
   // Year: dateparts[0], month: dateparts[1], day: dateparts[2];
   const dateparts = value.split('-');
-
   const fillWith = {
     chrome: dateparts[0] + this.Keys.TAB + dateparts[1] + dateparts[2]
   };
 
-  this.setValue(cssSelector, (fillWith[this.capabilities.browserName] ? fillWith[this.capabilities.browserName] : value));
-  this.pause(1);
+  this
+    .setValue(cssSelector, (fillWith[this.capabilities.browserName] ? fillWith[this.capabilities.browserName] : value))
+    .pause(1)
+    .execute(
+      function () {
+        document.querySelector(arguments[0]).dispatchEvent(new Event('change'));
+      },
+      [cssSelector]
+    );
 
   if (typeof callback === 'function') {
-    callback.call(self);
+    callback.call(_self);
   }
 
   return this;
