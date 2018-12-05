@@ -1,6 +1,9 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  enforced:
+    module:
+      - checkboxradio
 id: checkbox_radio
 label: 'Seven Checkboxes and Radios'
 recipients:

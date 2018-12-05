@@ -1,6 +1,9 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  enforced:
+    module:
+      - textarea
 name: 'Without Editor'
 format: no_editor
 weight: 0

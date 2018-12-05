@@ -1,6 +1,9 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  enforced:
+    module:
+      - textarea
 id: textarea
 label: 'Seven textarea'
 recipients:

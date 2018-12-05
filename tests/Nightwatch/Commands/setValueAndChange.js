@@ -44,6 +44,21 @@ exports.command = function setValueAndChange(cssSelector, value = '', callback) 
                 this.setDateValue(cssSelector, value);
                 break;
 
+              case 'file':
+                this.getAttribute(cssSelector, 'id', (result) => {
+                  cssSelector = 'input#' + result.value;
+                  this
+                    .setValue(cssSelector, value)
+                    .execute(
+                    function () {
+                      // Dispatch the change.
+                      document.querySelector(arguments[0]).dispatchEvent(new Event('change'));
+                    },
+                    [cssSelector, value ]
+                  );
+                });
+                break;
+
               default:
                 this
                   .setValue(cssSelector, value)

@@ -21,18 +21,6 @@ function sevenrefresh_toolbar() {
     '#weight' => 101,
   ];
 
-  $items['sevenrefresh_contact'] = [
-    '#type' => 'toolbar_item',
-    'tab' => [
-      '#type' => 'link',
-      '#title' => t('Test form'),
-      '#url' => Url::fromRoute('entity.contact_form.canonical', [
-        'contact_form' => 'testform',
-      ]),
-    ],
-    '#weight' => 102,
-  ];
-
   return $items;
 }
 

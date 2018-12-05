@@ -33,12 +33,10 @@ module.exports = {
     if (browser.drupalInstall) {
       ['', 'he'].forEach((langprefix) => {
         browser
-          .resizeWindow(1024, 800)
-          .sevenRefreshURL((langprefix ? '/' + langprefix : '') + '/contact/checkbox_radio');
-
-        browser
+          .resizeWindow(1024, 600)
+          .sevenRefreshURL((langprefix ? '/' + langprefix : '') + '/contact/checkbox_radio')
           .sevenRefreshURL('/contact/checkbox_radio')
-          .click('[name="checkbox[value]"]')
+          .setValueAndChange('[name="checkbox[value]"]', 1)
           .click('[name="checkboxes[first]"]')
           .click('[name="checkboxes[second]"]')
           .click('[name="checkboxes[third]"]')

@@ -18,7 +18,8 @@
       },
       "globals": {
         "waitForConditionTimeout": 5000,
-        "fullScreenShotOverride": true
+        "fullScreenShotOverride": true,
+        "fullScreenShotPieces": false
       },
       "desiredCapabilities": {
         "browserName": "chrome",

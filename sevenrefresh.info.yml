@@ -45,6 +45,7 @@ dependencies:
   - taxonomy
   - telephone
   - textarea
+  - textform
   - toolbar
   - tour
   - views

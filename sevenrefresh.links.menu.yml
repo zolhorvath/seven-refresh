@@ -3,11 +3,3 @@ sevenrefresh.front_page:
   route_name: '<front>'
   weight: 0
   menu_name: main
-
-sevenrefresh.testform:
-  title: 'Test form'
-  route_name: entity.contact_form.canonical
-  menu_name: main
-  weight: 2
-  route_parameters:
-    contact_form: testform

@@ -26,10 +26,8 @@ module.exports = {
 
     ['', 'he'].forEach((langprefix) => {
       browser
-        .resizeWindow(1024, 800)
-        .sevenRefreshURL((langprefix ? '/' + langprefix : '') + '/contact/textarea');
-
-      browser
+        .resizeWindow(1024, 600)
+        .sevenRefreshURL((langprefix ? '/' + langprefix : '') + '/contact/textarea')
         .setValueAndChange('[name="message[0][value]"]', 'Test message body')
         .waitForElementPresent('[name="formatted[0][value]"] + .cke .cke_wysiwyg_frame', 5000)
         .setSelectValue('[name="formatted[0][format]"]', 'no_editor')
@@ -49,19 +47,15 @@ module.exports = {
 
     ['', 'he'].forEach((langprefix) => {
       browser
-        .resizeWindow(1024, 800)
-        .sevenRefreshURL((langprefix ? '/' + langprefix : '') + '/contact/textarea');
-
-      browser
+        .resizeWindow(1024, 600)
+        .sevenRefreshURL((langprefix ? '/' + langprefix : '') + '/contact/textarea')
         .setValueAndChange('[name="message[0][value]"]', 'Test message body with error')
         .waitForElementPresent('[name="formatted[0][value]"] + .cke .cke_wysiwyg_frame', 5000)
         .setValueAndChange('[name="formatted[0][value]"]', 'Some text here (this doesn\'t matter).')
         .click('[class*="js-form-item-"][class*="-formatted-summary-0-value"] .link-edit-summary')
         .waitForElementVisible('[name="formatted_summary[0][summary]"]', 5000)
         .setValueAndChange('[name="formatted_summary[0][summary]"]', '..some summary here, but no text in main area!')
-        .click('input#edit-submit');
-
-      browser
+        .click('input#edit-submit')
         .waitForElementPresent('.messages--error', 5000)
         .elements('css selector', '.form-item__error-message,.form-item--error-message', (results) => {
           browser.savefullScreenShot((results.value.length ? '03' : '02'), langprefix, (results.value.length ? 'Inline errors' : ''));

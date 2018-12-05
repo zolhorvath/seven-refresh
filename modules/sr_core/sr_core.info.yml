@@ -4,6 +4,4 @@ description: 'Contains core components of the Seven Refresh profile what cannot 
 core: 8.x
 package: 'Seven Refresh'
 dependencies:
-  - drupal:block
-  - drupal:language
-  - drupal:locale
+  - drupal:field_layout

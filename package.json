@@ -1,5 +1,9 @@
 {
+  "scripts": {
+    "ssm": "node ./scripts/screenshotMerge.js"
+  },
   "devDependencies": {
+    "merge-img": "^2.1.2",
     "nightwatch": "^0.9.21"
   }
 }
