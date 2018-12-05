@@ -72,6 +72,10 @@ function _textform_message_error_validate(&$form, FormStateInterface $form_state
         if (
           !empty($value['value']) &&
           (
+            is_string($value['value']) ||
+            is_numeric($value['value'])
+          ) &&
+          (
             mb_stripos($value['value'], 'error') !== FALSE ||
             mb_stripos($value['value'], '#ff0000') !== FALSE ||
             mb_stripos($value['value'], '33') !== FALSE
