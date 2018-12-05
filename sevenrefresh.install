@@ -48,8 +48,14 @@ function sevenrefresh_install() {
     'access site-wide contact form',
   ]);
 
+  $theme = 'seven';
+
+  if (\Drupal::service('theme_installer')->install(['claro'])) {
+    $theme = 'claro';
+  }
+
   $config_factory->getEditable('system.theme')
-    ->set('admin', 'seven')
-    ->set('default', 'seven')
+    ->set('admin', $theme)
+    ->set('default', $theme)
     ->save();
 }
