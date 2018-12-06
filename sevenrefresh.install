@@ -49,8 +49,12 @@ function sevenrefresh_install() {
   ]);
 
   $theme = 'seven';
+  $themes_available = \Drupal::service('theme_handler')->rebuildThemeData();
 
-  if (\Drupal::service('theme_installer')->install(['claro'])) {
+  if (
+    !empty($themes_available['claro']) &&
+    \Drupal::service('theme_installer')->install(['claro'])
+  ) {
     $theme = 'claro';
   }
 
