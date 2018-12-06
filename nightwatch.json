@@ -49,6 +49,14 @@
         },
         "chromeOptions": null
       }
+    },
+
+    "ie11": {
+      "desiredCapabilities": {
+        "browserName": "internet explorer",
+        "browserVersion": "11",
+        "chromeOptions": null
+      }
     }
   }
 }

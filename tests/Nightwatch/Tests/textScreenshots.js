@@ -62,11 +62,11 @@ module.exports = {
         // Color.
         .setValueAndChange('[name="color[0][value]"]', '#ff0000')
         // Valid image file.
-        .setValueAndChange('[name="files[image_0]"]', imagePath)
+        .setValueAndChange('[name="files[image_0]"]:not([disabled])', imagePath)
         .waitTillElementPresent('[name="image[0][alt]"]', 5000)
         .setValueAndChange('[name="image[0][alt]"]', 'Green square')
         // Valid file.
-        .setValueAndChange('[name="files[file_0]"]', filePath)
+        .setValueAndChange('[name="files[file_0]"]:not([disabled])', filePath)
         .waitTillElementPresent('[name="file[0][description]"]', 5000)
         .setValueAndChange('[name="file[0][description]"]', 'File description')
         .savefullScreenShot('01', langprefix)
@@ -76,12 +76,12 @@ module.exports = {
         // Remove image and file.
         .click('[name="file_0_remove_button"]')
         .click('[name="image_0_remove_button"]')
-        .waitTillElementPresent('[name="files[file_0]"]', 5000)
+        .waitTillElementPresent('[name="files[file_0]"]:not([disabled])', 5000)
         // Upload invalid file.
         .setValueAndChange('[name="files[file_0]"]', fileInvalidPath)
         .waitTillElementPresent('[name="files[file_0]"].error', 5000)
         // Upload invalid image.
-        .waitTillElementPresent('[name="files[image_0]"]', 5000)
+        .waitTillElementPresent('[name="files[image_0]"]:not([disabled])', 5000)
         .setValueAndChange('[name="files[image_0]"]', imageInvalidPath)
         .waitTillElementPresent('[name="files[image_0]"].error', 5000)
         // Create 'Error' screenshot.

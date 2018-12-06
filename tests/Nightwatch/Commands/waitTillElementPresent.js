@@ -25,48 +25,52 @@ exports.command = function waitTillElementPresent(cssSelector, timeout = 10000) 
     process.stdout.write(` 🔍 Waiting for <${cssSelector}> `);
   }
 
-  this.pause(1).perform(() => {
-    switch (method) {
-      case 'A':
-        Array.from(Array(steps).keys()).forEach(function(step) {
-          this.element('css selector', cssSelector, (result) => {
-            found = found || (typeof result.errorStatus) === 'undefined';
-            if (!found) {
-              this.perform(() => {
-                if (multiMessage) {
-                  process.stdout.write('.');
-                }
-              }).pause(checkInterval);
-            }
-          });
-        }, this);
-        break;
+  this.element('css selector', cssSelector, (result) => {
+    if (!(found = ((typeof result.errorStatus) === 'undefined'))) { // Not found.
+      this.pause(1).perform(() => {
+      switch (method) {
+        case 'A':
+          Array.from(Array(steps).keys()).forEach(function(step) {
+            this.element('css selector', cssSelector, (result) => {
+              found = found || (typeof result.errorStatus) === 'undefined';
+              if (!found) {
+                this.perform(() => {
+                  if (multiMessage) {
+                    process.stdout.write('.');
+                  }
+                }).pause(checkInterval);
+              }
+            });
+          }, this);
+          break;
 
-      default:
-        // Create loop: calls perform 'steps' times.
-        // The while loop ends immediately, that's why I need the second 'pi'
-        // index.
-        // I still have issues when checkInterval < ~500.
-        let wi = pi = 0;
-        while ((wi < steps) && !found) {
-          this.perform(() => {
-            if ((pi < steps) && !found) {
-              this.element('css selector', cssSelector, (result) => {
-                // Break the outer while loop if true.
-                found = found || (typeof result.errorStatus) === 'undefined';
-                if (!found) {
-                  this.perform(() => {
-                    if (multiMessage) {
-                      process.stdout.write('.');
-                    }
-                  }).pause(checkInterval);
-                }
-              });
-            }
-            pi++;
-          });
-          wi++;
-        }
+        default:
+          // Create loop: calls perform 'steps' times.
+          // The while loop ends immediately, that's why I need the second 'pi'
+          // index.
+          // I still have issues when checkInterval < ~500.
+          let wi = pi = 0;
+          while ((wi < steps) && !found) {
+            this.perform(() => {
+              if ((pi < steps) && !found) {
+                this.element('css selector', cssSelector, (result) => {
+                  // Break the outer while loop if true.
+                  found = found || (typeof result.errorStatus) === 'undefined';
+                  if (!found) {
+                    this.perform(() => {
+                      if (multiMessage) {
+                        process.stdout.write('.');
+                      }
+                    }).pause(checkInterval);
+                  }
+                });
+              }
+              pi++;
+            });
+            wi++;
+          }
+      }
+      })
     }
   }).perform(() => {
     if (!found) {
@@ -78,7 +82,6 @@ exports.command = function waitTillElementPresent(cssSelector, timeout = 10000) 
           if (!multiMessage) {
             process.stdout.write(` 🔍 Waiting for <${cssSelector}> ✖\n`);
           }
-          this.assert.elementPresent(cssSelector);
         }
       });
     }
@@ -90,7 +93,7 @@ exports.command = function waitTillElementPresent(cssSelector, timeout = 10000) 
     if (found && !multiMessage) {
       process.stdout.write(` 🔍 Waiting for <${cssSelector}> ✔\n`);
     }
-  });
+  }).assert.elementPresent(cssSelector, 'Found');
 
   return this;
 }

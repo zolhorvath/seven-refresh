@@ -41,27 +41,38 @@ exports.command = function setValueAndChange(cssSelector, value = '', callback) 
           this.elementIdAttribute(inputId, 'type', (type) => {
             switch (type.value) { // Switch on input tag's type attribute.
               case 'date':
-                this.setDateValue(cssSelector, value);
+                this
+                  .setDateValue(cssSelector, value)
+                  .pause(1)
+                  .execute(
+                    function () {
+                      // Dispatch the change.
+                      document.querySelector(arguments[0]).dispatchEvent(new Event('change'));
+                    },
+                    [cssSelector]
+                  );
                 break;
 
               case 'file':
                 this.getAttribute(cssSelector, 'id', (result) => {
                   cssSelector = 'input#' + result.value;
                   this
-                    .setValue(cssSelector, value)
+                    .uploadLocalFile(cssSelector, value)
+                    .pause(1)
                     .execute(
-                    function () {
-                      // Dispatch the change.
-                      document.querySelector(arguments[0]).dispatchEvent(new Event('change'));
-                    },
-                    [cssSelector, value ]
-                  );
+                      function () {
+                        // Dispatch the change.
+                        document.querySelector(arguments[0]).dispatchEvent(new Event('change'));
+                      },
+                      [cssSelector]
+                    );
                 });
                 break;
 
               default:
                 this
                   .setValue(cssSelector, value)
+                  .pause(1)
                   .execute(
                     function () {
                       // Only Safari works without this value assignment

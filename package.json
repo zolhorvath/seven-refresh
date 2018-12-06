@@ -3,6 +3,7 @@
     "ssm": "node ./scripts/screenshotMerge.js"
   },
   "devDependencies": {
+    "archiver": "^3.0.0",
     "merge-img": "^2.1.2",
     "nightwatch": "^0.9.21"
   }
