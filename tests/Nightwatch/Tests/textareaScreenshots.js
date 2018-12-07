@@ -21,28 +21,7 @@ module.exports = {
       browser.end();
     }
   },
-  'Filled form'(browser) {
-    const path = require('path');
-
-    ['', 'he'].forEach((langprefix) => {
-      browser
-        .resizeWindow(1024, 600)
-        .sevenRefreshURL((langprefix ? '/' + langprefix : '') + '/contact/textarea')
-        .setValueAndChange('[name="message[0][value]"]', 'Test message body')
-        .waitForElementPresent('[name="formatted[0][value]"] + .cke .cke_wysiwyg_frame', 5000)
-        .setSelectValue('[name="formatted[0][format]"]', 'no_editor')
-        .waitForElementNotPresent('[name="formatted[0][value]"] + .cke', 5000)
-        .setValueAndChange('[name="formatted[0][value]"]', 'Some text here...')
-        .click('[class*="js-form-item-"][class*="-formatted-summary-0-value"] .link-edit-summary')
-        .waitForElementVisible('[name="formatted_summary[0][summary]"]', 5000)
-        .setValueAndChange('[name="formatted_summary[0][summary]"]', '..some summary here...')
-        .waitForElementPresent('[name="formatted_summary[0][value]"] + .cke .cke_wysiwyg_frame', 5000)
-        .setValueAndChange('[name="formatted_summary[0][value]"]', '..and some body text here too.')
-        .pause(300)
-        .savefullScreenShot('01', langprefix);
-    });
-  },
-  'Errors'(browser) {
+  'Textarea form'(browser) {
     const path = require('path');
 
     ['', 'he'].forEach((langprefix) => {
@@ -50,15 +29,21 @@ module.exports = {
         .resizeWindow(1024, 600)
         .sevenRefreshURL((langprefix ? '/' + langprefix : '') + '/contact/textarea')
         .setValueAndChange('[name="message[0][value]"]', 'Test message body with error')
-        .waitForElementPresent('[name="formatted[0][value]"] + .cke .cke_wysiwyg_frame', 5000)
-        .setValueAndChange('[name="formatted[0][value]"]', 'Some text here (this doesn\'t matter).')
+        .waitTillElementPresent('[name="formatted[0][value]"] + .cke .cke_wysiwyg_frame', 5000)
+        .click('[name="formatted[0][format]"]')
+        .click('[name="formatted[0][format]"] option[value="no_editor"]')
+        .click('[name="message[0][value]"]')
+        .waitForElementNotPresent('[name="formatted[0][value]"] + .cke', 5000)
+        .setValueAndChange('[name="formatted[0][value]"]', 'Some text here...')
         .click('[class*="js-form-item-"][class*="-formatted-summary-0-value"] .link-edit-summary')
         .waitForElementVisible('[name="formatted_summary[0][summary]"]', 5000)
         .setValueAndChange('[name="formatted_summary[0][summary]"]', '..some summary here, but no text in main area!')
+        .pause(300)
+        .savefullScreenShot('01', langprefix)
         .click('input#edit-submit')
-        .waitForElementPresent('.messages--error', 5000)
+        .waitTillElementPresent('.messages--error', 5000)
         .elements('css selector', '.form-item__error-message,.form-item--error-message', (results) => {
-          browser.savefullScreenShot((results.value.length ? '03' : '02'), langprefix, (results.value.length ? 'Inline errors' : ''));
+          browser.savefullScreenShot((results.value.length ? '03' : '02'), langprefix, (results.value.length ? 'Inline errors' : 'Errors'));
         });
     });
   }

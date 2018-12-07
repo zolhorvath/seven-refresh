@@ -15,13 +15,13 @@
  */
 exports.command = function setDateValue(cssSelector, value = '', callback) {
   const _self = this;
-  const platformName = (_self.capabilities.platform || _self.capabilities.platformName || 'nan').toLowerCase();
+  const platformName = (_self.capabilities.platformName || _self.capabilities.platform || 'nan').toLowerCase();
   const browserName = (_self.capabilities.browserName || 'nan').toLowerCase();
   // Year: dateparts[0], month: dateparts[1], day: dateparts[2];
   const dateparts = value.split('-');
   const fillPattern = {
-    'chrome::windows nt': dateparts[1] + dateparts[2] + dateparts[0],
-    chrome: dateparts[0] + this.Keys.TAB + dateparts[1] + dateparts[2]
+    'chrome::mac': dateparts[0] + this.Keys.TAB + dateparts[1] + dateparts[2],
+    'chrome': dateparts[1] + dateparts[2] + dateparts[0]
   };
 
   this.setValue(cssSelector, (fillPattern[`${browserName}::${platformName}`] || fillPattern[browserName] || value));

@@ -30,7 +30,7 @@ exports.command = function savefullScreenShot(
 ) {
 
   const _self = this;
-  let nameComponents = [(name ? name : _self.currentTest.name), _self.capabilities.platform || _self.capabilities.platformName, _self.capabilities.browserName];
+  let nameComponents = [(name ? name : _self.currentTest.name), _self.capabilities.platformName || _self.capabilities.platform, _self.capabilities.browserName];
   if (
     _self.capabilities.mobileEmulationEnabled &&
     _self.options.desiredCapabilities.chromeOptions &&
@@ -139,7 +139,7 @@ exports.command = function savefullScreenShot(
                   offsetY = !diff.errorStatus ? diff.value : 0;
                 }
               )
-              .pause(1)
+              .pause(50)
               .perform(() => {
                 const src = path.join(fileNameWithPath, `${step + 1}--${viewportDimensions.width}x${viewportDimensions.height}--${offsetY}.png`);
                 shotSet.push({

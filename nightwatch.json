@@ -22,8 +22,23 @@
         "fullScreenShotPieces": false
       },
       "desiredCapabilities": {
+        "browserName": "chrome"
+      }
+    },
+
+    "chrome": {
+      "desiredCapabilities": {
         "browserName": "chrome",
+        "platform": "MAC",
         "chromeOptions": {
+          "args": [
+            "headless",
+            "disable-gpu",
+            "disable-web-security",
+            "ignore-certificate-errors"
+          ]
+        },
+        "goog:chromeOptions": {
           "args": [
             "headless",
             "disable-gpu",
@@ -34,28 +49,102 @@
       }
     },
 
-    "safari": {
+    "chromeWin": {
       "desiredCapabilities": {
-        "browserName": "safari",
-        "chromeOptions": null
+        "browserName": "chrome",
+        "platform": "WIN8_1",
+        "chromeOptions": {
+          "args": [
+            "headless",
+            "disable-gpu",
+            "disable-web-security",
+            "ignore-certificate-errors"
+          ]
+        },
+        "goog:chromeOptions": {
+          "args": [
+            "headless",
+            "disable-gpu",
+            "disable-web-security",
+            "ignore-certificate-errors"
+          ]
+        }
+      }
+    },
+
+    "chromeLinux": {
+      "desiredCapabilities": {
+        "browserName": "chrome",
+        "platform": "Linux",
+        "chromeOptions": {
+          "args": [
+            "headless",
+            "disable-gpu",
+            "disable-web-security",
+            "ignore-certificate-errors"
+          ]
+        },
+        "goog:chromeOptions": {
+          "args": [
+            "headless",
+            "disable-gpu",
+            "disable-web-security",
+            "ignore-certificate-errors"
+          ]
+        }
       }
     },
 
     "firefox": {
       "desiredCapabilities": {
         "browserName": "firefox",
+        "platformName": "mac",
         "moz:firefoxOptions": {
           "args": ["-headless"]
-        },
-        "chromeOptions": null
+        }
+      }
+    },
+
+    "firefoxWin": {
+      "desiredCapabilities": {
+        "browserName": "firefox",
+        "platformName": "windows",
+        "moz:firefoxOptions": {
+          "args": ["-headless"]
+        }
+      }
+    },
+
+    "firefoxLinux": {
+      "desiredCapabilities": {
+        "browserName": "firefox",
+        "platformName": "linux",
+        "moz:firefoxOptions": {
+          "args": ["-headless"]
+        }
+      }
+    },
+
+    "safari": {
+      "desiredCapabilities": {
+        "browserName": "safari"
       }
     },
 
     "ie11": {
       "desiredCapabilities": {
         "browserName": "internet explorer",
-        "browserVersion": "11",
-        "chromeOptions": null
+        "se:ieOptions": {
+          "ignoreZoomSetting": true,
+          "nativeEvents": false,
+          "requireWindowFocus": true
+        }
+      }
+    },
+
+    "edge": {
+      "desiredCapabilities": {
+        "browserName": "MicrosoftEdge"
       }
     }
   }

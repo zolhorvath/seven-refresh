@@ -22,7 +22,6 @@ uploadLocalFile.prototype.command = function uploadLocalFile (inputSelector, fil
   const self = this
   const Nightwatch = this.client
   const api = this.api
-  console.log(Nightwatch.options.selenium_host);
 
   if (
     Nightwatch.options.selenium_host &&
