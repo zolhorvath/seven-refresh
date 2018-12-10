@@ -146,6 +146,18 @@
       "desiredCapabilities": {
         "browserName": "MicrosoftEdge"
       }
+    },
+
+    "iPhone5": {
+      "desiredCapabilities": {
+        "browserName": "Safari",
+        "platformName": "iOS",
+        "platformVersion": "11.2",
+        "deviceName": "iPhone 5s",
+        "automationName": "XCUITest",
+        "isHeadless": true,
+        "newCommandTimeout": 120
+      }
     }
   }
 }

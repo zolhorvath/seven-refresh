@@ -29,13 +29,13 @@ const imageMerge = () => {
         const index = parseInt(match[1], 10);
         const width = parseInt(match[2], 10);
         const height = parseInt(match[3], 10);
-        const offsetY = parseInt(match[4], 10);
+        let offsetY = parseInt(match[4], 10);
 
         Jimp.read(shotPiecePath, (err, piece) => {
           if (err) throw err;
 
           if (piece.bitmap.height !== height) {
-            piece.resize(Jimp.AUTO, height);
+            offsetY = offsetY * (piece.bitmap.height / height);
           }
 
           screenshotSet[index - 1] = {
