@@ -148,7 +148,7 @@
       }
     },
 
-    "iPhone5": {
+    "iphone5": {
       "desiredCapabilities": {
         "browserName": "Safari",
         "platformName": "iOS",
@@ -157,6 +157,22 @@
         "automationName": "XCUITest",
         "isHeadless": true,
         "newCommandTimeout": 120
+      }
+    },
+
+    "android": {
+      "desiredCapabilities": {
+        "browserName": "Chrome",
+        "platformName": "Android",
+        "automationName": "UiAutomator2",
+        "deviceName": "nexus",
+        "avd": "nexus",
+        "chromeOptions": {
+          "args": ["--no-first-run"]
+        },
+        "goog:chromeOptions": {
+          "args": ["--no-first-run"]
+        }
       }
     }
   }
