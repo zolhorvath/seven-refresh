@@ -24,7 +24,13 @@ exports.command = function setDateValue(cssSelector, value = '', callback) {
     'chrome': dateparts[1] + dateparts[2] + dateparts[0]
   };
 
-  this.setValue(cssSelector, (fillPattern[`${browserName}::${platformName}`] || fillPattern[browserName] || value));
+  this
+    .execute(function () {
+        document.querySelector(arguments[0]).value = arguments[1];
+      },
+      [cssSelector, value]
+    )
+    .setValue(cssSelector, (fillPattern[`${browserName}::${platformName}`] || fillPattern[browserName] || value));
 
   if (typeof callback === 'function') {
     callback.call(_self);
