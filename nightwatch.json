@@ -148,14 +148,14 @@
       }
     },
 
-    "iphone5": {
+    "iPhone5": {
       "desiredCapabilities": {
         "browserName": "Safari",
+        "platform": "IOS",
         "platformName": "iOS",
         "platformVersion": "11.2",
         "deviceName": "iPhone 5s",
         "automationName": "XCUITest",
-        "isHeadless": true,
         "newCommandTimeout": 120
       }
     },
