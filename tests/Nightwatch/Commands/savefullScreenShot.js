@@ -30,7 +30,9 @@ exports.command = function savefullScreenShot(
 ) {
 
   const _self = this;
-  let nameComponents = [(name ? name : _self.currentTest.name), _self.capabilities.platformName || _self.capabilities.platform, _self.capabilities.browserName];
+  const platformName = _self.capabilities.platformName || _self.capabilities.platform || 'nan';
+  const browserName = _self.capabilities.browserName || 'nan';
+  let nameComponents = [(name ? name : _self.currentTest.name), platformName, browserName];
   if (
     _self.capabilities.mobileEmulationEnabled &&
     _self.options.desiredCapabilities.chromeOptions &&
@@ -62,12 +64,13 @@ exports.command = function savefullScreenShot(
   let documentDimensions = {};
   let viewportDimensions = {};
   let windowHandle;
+  const documentElementTag = platformName === 'iOS' ? 'body' : 'html';
 
   // For first, we get dimensions of the document, viewPort and browser window, and
   // create 'real' screenshots (piece by piece) about the page.
   this
     // Get html element's size.
-    .getElementSize('html', (htmlSizeResult) => {
+    .getElementSize(documentElementTag, (htmlSizeResult) => {
       if (!htmlSizeResult.errorStatus) {
         documentDimensions = htmlSizeResult.value;
       }
@@ -180,31 +183,33 @@ exports.command = function savefullScreenShot(
     // window. This does not work for mobile devices like iOS or Android
     // (makes sense by the way).
     .perform(() => {
-      // Resize the browser window to make document fit into.
-      this.resizeWindow(
-        Math.floor(
-          documentDimensions.width +
-          // Add diff between the viewPort and window width.
-          (windowDimensions.width - viewportDimensions.width)
-        ),
-        Math.floor(
-          documentDimensions.height +
-          // Add diff between the viewPort and window height.
-          (windowDimensions.height - viewportDimensions.height)
-        ),
-        () => {
-          this.saveScreenshot(fileNameWithPath + '.png');
-        }).perform(() => {
-          // Restore original window dimensions.
-          if (windowDimensions.width && windowDimensions.height) {
-            this
+      if (windowDimensions.height) {
+        // Resize the browser window to make document fit into.
+        this.resizeWindow(
+          Math.floor(
+            documentDimensions.width +
+            // Add diff between the viewPort and window width.
+            (windowDimensions.width - viewportDimensions.width)
+          ),
+          Math.floor(
+            documentDimensions.height +
+            // Add diff between the viewPort and window height.
+            (windowDimensions.height - viewportDimensions.height)
+          ),
+          () => {
+            this.saveScreenshot(fileNameWithPath + '.png');
+          }).perform(() => {
+            // Restore original window dimensions.
+            if (windowDimensions.width && windowDimensions.height) {
+              this
               .resizeWindow(windowDimensions.width, windowDimensions.height)
               .execute(function () {
                 // Scroll to initial.
                 window.scroll(arguments[0], arguments[1]);
               }, [initialScrollPos.x, initialScrollPos.y]);
-          }
-        });
+            }
+          });
+      }
     })
     .pause(1);
 
