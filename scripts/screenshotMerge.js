@@ -46,8 +46,13 @@ const imageMerge = () => {
 
           if (setPieces.length === asyncCounter.length) {
             imageMerger(screenshotSet, { direction: true }).then(merged => {
-              const fileName = path.join(screenshotsMainPath, path.basename(set));
-              merged.write(`${fileName}--merged.png`);
+              const fileName = path.join(screenshotsMainPath, path.basename(set)) + '--merged.png';
+              if (piece.bitmap.height !== height) {
+                merged.resize(width, Jimp.AUTO).write(fileName);
+              }
+              else {
+                merged.write(fileName);
+              }
               console.log(' ✔ Merged ' + path.basename(set));
             });
           }
