@@ -3,16 +3,13 @@ const path = require('path');
 const fs = require('fs');
 const Jimp = require('jimp');
 const screenshotsMainPath = path.join((process.env.PWD || process.cwd()), 'reports', 'screenshots');
-const shotsetDirs = fs.readdirSync(screenshotsMainPath).filter(dirent => fs.lstatSync(path.join(screenshotsMainPath, dirent)).isDirectory());
+const shotsetDirs = fs.readdirSync(screenshotsMainPath).filter(dirent => { return fs.lstatSync(path.join(screenshotsMainPath, dirent)).isDirectory() && dirent !== 'merged'});
 
 const imageMerge = () => {
   Array.from(shotsetDirs).forEach((rootDir) => {
     const rootDirAbs = path.join(screenshotsMainPath, rootDir);
     const dirents = fs.readdirSync(rootDirAbs);
-    const sets = dirents.filter(dirent => fs.lstatSync(path.join(rootDirAbs, dirent)).isDirectory()).map(dirent => path.join(rootDirAbs, dirent));
-    //
-    // // const sets = [tsets[2], tsets[8]];
-    // const sets = [tsets[2]];
+    const sets = dirents.filter((dirent) => fs.lstatSync(path.join(rootDirAbs, dirent)).isDirectory()).map(dirent => path.join(rootDirAbs, dirent));
 
     Array.from(sets).forEach((set) => {
       const setDirents = fs.readdirSync(set);
@@ -21,6 +18,21 @@ const imageMerge = () => {
       let asyncCounter = [];
 
       console.log('Processing set ' + path.basename(set));
+
+      const metaPieces = path.basename(set).split('--');
+      let platform = (metaPieces[2] || 'no-platform').toLowerCase();
+      platform = platform === 'macos' ? 'mac' : (platform === 'win8_1' ? 'windows' : (platform === 'linux' ? 'ubuntu' : platform));
+      const browser = (metaPieces[3] || 'no-browser').toLowerCase();
+      const langcode = 'langcode-' + (metaPieces[4] || 'default');
+      const pathComps = [screenshotsMainPath, 'merged', [platform, browser].join('-'), langcode];
+      const shotPath = pathComps.join(path.sep);
+
+      Array.from(pathComps).forEach((item, pathCompIndex) => {
+        const pathToCheck = pathComps.slice(0, (pathCompIndex + 1)).join(path.sep);
+        if (!fs.existsSync(pathToCheck)) {
+          fs.mkdirSync(pathToCheck);
+        }
+      });
 
       Array.from(setPieces).forEach((shotPiecePath, i) => {
         const regexp = /\/([\d]{1,})--([\d]{1,})x([\d]{1,})--([\d]{1,})\.(\d|\w{3,6})$/;
@@ -46,7 +58,7 @@ const imageMerge = () => {
 
           if (setPieces.length === asyncCounter.length) {
             imageMerger(screenshotSet, { direction: true }).then(merged => {
-              const fileName = path.join(screenshotsMainPath, path.basename(set)) + '--merged.png';
+              const fileName = path.join(shotPath, path.basename(set)) + '--merged.png';
               if (piece.bitmap.height !== height) {
                 merged.resize(width, Jimp.AUTO).write(fileName);
               }
@@ -65,12 +77,3 @@ const imageMerge = () => {
 if (require.main === module) {
   imageMerge();
 }
-
-// imageMerger(['image-1.png', 'image-2.jpg'])
-//   .then((img) => {
-//     // Save image as file
-//     img.write('out.png', () => console.log('done'));
-//
-//     // Get image as `Buffer`
-//     img.getBuffer(img.getMIME(), (buf) => console.log(buf));
-//   });

@@ -48,7 +48,7 @@ module.exports = {
         .click('[name="checkboxes[third]"]')
         .submitForm('form.contact-message-checkbox-radio-form')
         .waitTillElementPresent('.messages--error', 5000)
-        .elements('css selector', '.form-item__error-message,.form-item--error-message', (results) => {
+        .elements('css selector', '.form-item__error-message,.form-item--error-message,.fieldset__error-message', (results) => {
           browser.savefullScreenShot((results.value.length ? '03' : '02'), langprefix, (results.value.length ? 'Inline error states' : ''));
         });
     });
