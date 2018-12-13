@@ -22,6 +22,13 @@ Object.keys(ifaces).forEach(function (ifname) {
 });
 
 module.exports = ((settings) => {
+  // Don't override full screen capture files.
+  // If this is not defined or is not false then the generated pngs get
+  // overridden on each test run.
+  settings.test_settings.default.globals.fullScreenShotOverride = true;
+  // Don't produce pieces.
+  settings.test_settings.default.globals.fullScreenShotPieces = false;
+
   // const customIp = '127.0.0.1';
   // const customIp = '192.168.0.102';
   const customIp = '172.16.0.189';
@@ -42,23 +49,8 @@ module.exports = ((settings) => {
   //
   // // Real profile for Firefox.
   // settings.test_settings.firefox.desiredCapabilities['moz:firefoxOptions'].args = [];
-
-  settings.test_settings.default.launch_url = 'http://127.0.0.1/seven-test/docroot';
-  // Custom arguments for Chrome.
-  settings.test_settings.default.desiredCapabilities.chromeOptions.args = [
-    'disable-gpu',
-    'disable-web-security',
-    'ignore-certificate-errors'
-  ];
-  // Real profile for Firefox.
-  settings.test_settings.firefox.desiredCapabilities['moz:firefoxOptions'].args.push('-profile', '/path/to/profile');
-
-  // Don't override full screen capture files.
-  // If this isn't defined or true, then the generated pngs get overridden on
-  // each test run.
-  settings.test_settings.default.globals.fullScreenShotOverride = true;
-  // Don't produce pieces.
-  settings.test_settings.default.globals.fullScreenShotPieces = false;
+  // // Real profile for Firefox.
+  // settings.test_settings.firefox.desiredCapabilities['moz:firefoxOptions'].args.push('-profile', '/path/to/profile');
 
   return settings;
 })(require('./nightwatch.json'));
