@@ -29,6 +29,7 @@ exports.command = function setEditorValue(cssSelector, value = '', callback) {
   this.elements('css selector', editorFrameSelector, (results) => {
     if (!results.value.length) {
       this
+        .clearValue(cssSelector)
         .setValue(cssSelector, value)
         .execute(
           function () {

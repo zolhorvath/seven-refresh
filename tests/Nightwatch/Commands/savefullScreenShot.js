@@ -183,7 +183,7 @@ exports.command = function savefullScreenShot(
     // window. This does not work for mobile devices like iOS or Android
     // (makes sense by the way).
     .perform(() => {
-      if (windowDimensions.height) {
+      if (!pieceShots && windowDimensions.height) {
         // Resize the browser window to make document fit into.
         this.resizeWindow(
           Math.floor(
