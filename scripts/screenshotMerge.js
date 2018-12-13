@@ -3,7 +3,9 @@ const path = require('path');
 const fs = require('fs');
 const Jimp = require('jimp');
 const screenshotsMainPath = path.join((process.env.PWD || process.cwd()), 'reports', 'screenshots');
-const shotsetDirs = fs.readdirSync(screenshotsMainPath).filter(dirent => { return fs.lstatSync(path.join(screenshotsMainPath, dirent)).isDirectory() && dirent !== 'merged'});
+const fixedOnly = process.argv.slice(2).indexOf('--fixed-only') > -1;
+const fixedPath = path.join(screenshotsMainPath, 'fixed');
+const shotsetDirs = !fixedOnly ? fs.readdirSync(screenshotsMainPath).filter(dirent => { return fs.lstatSync(path.join(screenshotsMainPath, dirent)).isDirectory() && ['merged', 'fixed'].indexOf(dirent) < 0 }) : (fs.existsSync(fixedPath) && fs.lstatSync(fixedPath).isDirectory() ? ['fixed'] : []);
 
 const imageMerge = () => {
   Array.from(shotsetDirs).forEach((rootDir) => {
