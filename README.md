@@ -1,5 +1,7 @@
 # Seven Refresh
 
+⛔️ DEPRECATED ⛔️ Project is moved to [Claro Distribution](https://github.com/zolhorvath/clarodist/).
+
 Drupal distribution for Seven refresh
 
 ## Getting
